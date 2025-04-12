@@ -1,9 +1,22 @@
-FROM python:3.9
+# Use an official Python runtime
+FROM python:3.9-slim
 
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set work directory
 WORKDIR /app
 
-COPY . .
+# Copy everything into the container
+COPY . /app
 
-RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-CMD ["python", "app.py"]
+# Expose the port Flask runs on
+EXPOSE 5000
+
+# Run the app
+CMD ["python", "main.py"]

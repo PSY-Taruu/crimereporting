@@ -1,24 +1,40 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "pet_adoption_app"
+        CONTAINER_NAME = "pet_adoption_container"
+    }
+
     stages {
-        stage('Checkout Code') {
+        stage('Clone Repository') {
             steps {
+<<<<<<< HEAD
                 git branch: 'master', url: 'https://github.com/PSY-Taruu/crimereporting.git'
+=======
+                git branch: 'main', url: 'https://github.com/harshaa2312/PetAdoption.git'
+>>>>>>> 9d0a0ea (Initial commit)
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t flask-app .'
+                script {
+                    sh 'docker version'  // To verify Docker is accessible
+                    sh "docker build -t $IMAGE_NAME ."
+                }
             }
         }
 
-        stage('Run Flask Container') {
+        stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 flask-app'
+                script {
+                    // Stop and remove existing container if any
+                    sh "docker rm -f $CONTAINER_NAME || true"
+                    // Run container
+                    sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME"
+                }
             }
         }
     }
 }
-``
