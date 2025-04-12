@@ -2,18 +2,14 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "pet_adoption_app"
-        CONTAINER_NAME = "pet_adoption_container"
+        IMAGE_NAME = "crimereporting_image"
+        CONTAINER_NAME = "crime_reporting_container"
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-<<<<<<< HEAD
                 git branch: 'master', url: 'https://github.com/PSY-Taruu/crimereporting.git'
-=======
-                git branch: 'main', url: 'https://github.com/harshaa2312/PetAdoption.git'
->>>>>>> 9d0a0ea (Initial commit)
             }
         }
 
