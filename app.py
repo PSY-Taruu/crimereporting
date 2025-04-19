@@ -53,10 +53,12 @@ def report_crime():
         conn.commit()
         conn.close()
 
-        # Return JSON response
-        return jsonify({'message': 'Crime reported successfully!'})
+        flash('Crime reported successfully!')
+        return redirect(url_for('report_crime'))  # Redirect back to same page to clear form
 
     return render_template('report.html')
+
+
 
 @app.route('/view_reports')
 def view_reports():

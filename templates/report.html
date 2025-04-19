@@ -46,6 +46,12 @@
         input[type="submit"]:hover {
             background-color: #2980b9;
         }
+        .flash {
+            text-align: center;
+            color: green;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
         a {
             display: block;
             text-align: center;
@@ -60,17 +66,23 @@
 <body>
     <h1>Report a Crime</h1>
 
-    <form id="crimeForm" onsubmit="submitCrime(event)">
+    <!-- Flash message area -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">{{ messages[0] }}</div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/report">
         <label for="crime_type">Crime Type:</label>
-        <input type="text" name="crime_type" id="crime_type" required><br><br>
+        <input type="text" name="crime_type" id="crime_type" required>
 
         <label for="description">Description:</label>
-        <textarea name="description" id="description" required></textarea><br><br>
+        <textarea name="description" id="description" required></textarea>
 
         <input type="submit" value="Submit Report">
     </form>
 
-    <br>
     <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
 </body>
 </html>
