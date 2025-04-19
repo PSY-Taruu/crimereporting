@@ -19,4 +19,4 @@ RUN pip install --upgrade pip && \
 EXPOSE 5000
 
 # Run the app
-CMD ["python", "main.py"]
+CMD ["python", "app.py"]

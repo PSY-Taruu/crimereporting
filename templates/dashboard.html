@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crime Reporting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 50px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Crime Reporting System Dashboard!</h1>
+    <a href="{{ url_for('report_crime') }}">Report a Crime</a>
+    <a href="{{ url_for('view_reports') }}">View Reported Crimes</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

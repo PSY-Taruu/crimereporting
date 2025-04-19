@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Reported Crimes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e7f0;
+        }
+        p {
+            text-align: center;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reported Crimes</h1>
+    {% if reports %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Crime Type</th>
+            <th>Description</th>
+            <th>Report Time</th>
+        </tr>
+        {% for report in reports %}
+        <tr>
+            <td>{{ report[0] }}</td>
+            <td>{{ report[1] }}</td>
+            <td>{{ report[2] }}</td>
+            <td>{{ report[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No crime reports found.</p>
+    {% endif %}
+</body>
+</html>
